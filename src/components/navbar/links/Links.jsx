@@ -1,5 +1,5 @@
-const { default: Link } = require("next/link");
 import styles from "./links.module.css";
+import NavLink from "./navLink/navLink";
 
 const Links = () => {
   const links = [
@@ -12,9 +12,8 @@ const Links = () => {
   return (
     <div className={styles.links}>
       {links.map((link) => (
-        <Link href={link.path} key={link.title}>
-          {link.title}
-        </Link>
+        // Linkin üstüne tıklanıldığında stillendirme yaptık, arkaplan beyaz oldu. onun için bu stillendirmeyi navLink klasöründe yaptık
+        <NavLink item={link} key={link.title} />
       ))}
     </div>
   );
