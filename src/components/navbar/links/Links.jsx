@@ -9,12 +9,24 @@ const Links = () => {
     { title: "Blog", path: "/blog" },
   ];
 
+  // TEMPORARY
+  const session = true;
+  const isAdmin = true;
+
   return (
     <div className={styles.links}>
       {links.map((link) => (
         // Linkin üstüne tıklanıldığında stillendirme yaptık, arkaplan beyaz oldu. onun için bu stillendirmeyi navLink klasöründe yaptık
         <NavLink item={link} key={link.title} />
       ))}
+      {session ? (
+        <>
+          {isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
+          <button className={styles.logout}>Logout</button>
+        </>
+      ) : (
+        <NavLink item={{ title: "Login", path: "/login" }} />
+      )}
     </div>
   );
 };
